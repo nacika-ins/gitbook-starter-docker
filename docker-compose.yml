@@ -1,0 +1,19 @@
+gitbook: 
+  build: .
+  volumes:
+    - ./app:/gitbook/app
+  ports:
+    - "4000:4000"
+
+build:
+  build: .
+  volumes_from: 
+    - gitbook
+  command: run build
+
+test:
+  build: .
+  volumes_from: 
+    - gitbook
+  command: test
+
